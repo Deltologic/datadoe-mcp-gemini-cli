@@ -275,10 +275,15 @@ configure_mcp_remote_settings() {
 {
   "mcpServers": {
     "datadoe": {
-      "command": "bash",
+      "command": "npx",
       "args": [
-        "-lc",
-        "npx -y mcp-remote@latest https://api.datadoe.com/mcp/v1 --transport http-only --header \"datadoe-mcp-key:${DATADOE_MCP_KEY}\""
+        "-y",
+        "mcp-remote@latest",
+        "https://api.datadoe.com/mcp/v1",
+        "--transport",
+        "http-only",
+        "--header",
+        "datadoe-mcp-key:${DATADOE_MCP_KEY}"
       ],
       "env": {
         "DATADOE_MCP_KEY": "$DATADOE_MCP_KEY"
