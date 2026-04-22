@@ -303,7 +303,7 @@ start_gemini_cli() {
     return 1
   fi
 
-  gemini_note "Launching Gemini CLI..."
+  gemini_note "$(gradient_text "Launching Gemini CLI...")"
   cd "$ROOT_DIR"
   exec gemini
 }
@@ -337,7 +337,7 @@ choose_mode() {
 
   while true; do
     say ""
-    gemini_note "Choose launch mode:"
+    gemini_note "$(gradient_text "Choose launch mode:")"
     say "  ${C_BOLD}1${C_RESET}) Gemini CLI $(gemini_status_label)"
     say "  ${C_BOLD}2${C_RESET}) Exit"
     printf "${C_CYAN}Enter option [1-2]: ${C_RESET}"
