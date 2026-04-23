@@ -106,7 +106,8 @@ Use it as a starter pack:
 
 This repository includes a dedicated launcher script:
 
-> [!WARNING] > `scripts/start-gemini.sh` is the protected launcher for this repository.
+> [!WARNING]
+> `scripts/start-gemini.sh` is the protected launcher for this repository.
 > Do not edit, replace, or "quick fix" it unless you are intentionally changing launcher behavior.
 
 ```bash
