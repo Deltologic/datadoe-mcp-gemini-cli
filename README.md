@@ -13,7 +13,6 @@ This repository is a minimal example of using the DataDoe MCP server from Gemini
 - [DataDoe MCP Configuration Options](#datadoe-mcp-configuration-options)
 - [Validation Checklist](#validation-checklist)
 - [How to get help](#how-to-get-help)
-- [Tags](#tags)
 
 ## What This Repo Includes
 
@@ -183,7 +182,3 @@ The recommended path is to always start with `./scripts/start-gemini.sh`, which 
 - Email: [contact@datadoe.com](mailto:contact@datadoe.com)
 - Gemini CLI docs: [geminicli.com/docs](https://geminicli.com/docs/)
 - Gemini CLI commands: [geminicli.com/docs/reference/commands](https://geminicli.com/docs/reference/commands/)
-
-## Tags
-
-`DataDoe` `MCP` `Google` `Gemini CLI` `Amazon` `Amazon Seller` `AI Assistant` `LLM` `Prompting` `E-Commerce` `Online Marketplaces`
