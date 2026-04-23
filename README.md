@@ -1,6 +1,6 @@
 # DataDoe MCP + Gemini CLI Template
 
-This repository is a starter template for integrating DataDoe MCP with Gemini CLI in a secure, team-friendly way.
+This repository is a minimal example of using the DataDoe MCP server from Gemini CLI for Amazon-focused workflows.
 
 ## Table of Contents
 
@@ -13,7 +13,6 @@ This repository is a starter template for integrating DataDoe MCP with Gemini CL
 - [DataDoe MCP Configuration Options](#datadoe-mcp-configuration-options)
 - [Validation Checklist](#validation-checklist)
 - [How to get help](#how-to-get-help)
-- [Recommended repository cleanup](#recommended-repository-cleanup)
 - [Tags](#tags)
 
 ## What This Repo Includes
@@ -89,8 +88,7 @@ and [`mcp-remote` usage docs](https://www.npmjs.com/package/mcp-remote#Usage)
 
 This repository includes a dedicated launcher script:
 
-> [!WARNING]
-> `scripts/start-gemini.sh` is the protected launcher for this repository.
+> [!WARNING] > `scripts/start-gemini.sh` is the protected launcher for this repository.
 > Do not edit, replace, or "quick fix" it unless you are intentionally changing launcher behavior.
 
 ```bash
@@ -185,16 +183,6 @@ The recommended path is to always start with `./scripts/start-gemini.sh`, which 
 - Email: [contact@datadoe.com](mailto:contact@datadoe.com)
 - Gemini CLI docs: [geminicli.com/docs](https://geminicli.com/docs/)
 - Gemini CLI commands: [geminicli.com/docs/reference/commands](https://geminicli.com/docs/reference/commands/)
-
-## Recommended repository cleanup
-
-For each repository using this template, keep settings lean:
-
-- Disable GitHub Wiki if not used.
-- Disable GitHub Projects if not used.
-- Disable Discussions if not used.
-- Keep branch protection minimal but enabled for your main branch.
-- Do not commit `.env` or real API keys.
 
 ## Tags
 
