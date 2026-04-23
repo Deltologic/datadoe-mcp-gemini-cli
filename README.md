@@ -4,22 +4,28 @@ This repository is a minimal example of using the DataDoe MCP server from Gemini
 
 ## Table of Contents
 
+- [What you can do with this repo](#what-you-can-do-with-this-repo)
 - [What This Repo Includes](#what-this-repo-includes)
 - [Prerequisites](#prerequisites)
-- [Get DataDoe Subscription and MCP Key](#get-datadoe-subscription-and-mcp-key)
+- [How to get a DataDoe subscription and get MCP Key](#how-to-get-a-datadoe-subscription-and-get-mcp-key)
 - [Configure DataDoe MCP in Gemini CLI](#configure-datadoe-mcp-in-gemini-cli)
+- [Example prompt library starter pack](#example-prompt-library-starter-pack)
 - [Run Gemini CLI from Dedicated Launcher](#run-gemini-cli-from-dedicated-launcher)
 - [Gemini Settings (Official Model)](#gemini-settings-official-model)
 - [DataDoe MCP Configuration Options](#datadoe-mcp-configuration-options)
-- [Validation Checklist](#validation-checklist)
 - [How to get help](#how-to-get-help)
+
+## What you can do with this repo
+
+- Connect Gemini CLI to DataDoe MCP in a secure way.
+- Ask Amazon seller questions using DataDoe-backed data.
+- Reuse this setup as a template for new Amazon-focused assistant projects.
 
 ## What This Repo Includes
 
 - Gemini CLI MCP setup guidance for a project-scoped `datadoe` server
 - secure secret handling with `.env` and `.env.example`
 - repository-specific assistant rules in `GEMINI.md`
-- validation checks to confirm integration is working
 
 ## Prerequisites
 
@@ -51,16 +57,16 @@ If your organization uses Google Workspace subscription access for Gemini CLI, a
 3. Complete browser sign-in with your Workspace account
 4. If needed later, run `/auth` inside Gemini CLI to switch authentication method
 
-## Get DataDoe Subscription and MCP Key
+## How to get a DataDoe subscription and get MCP Key
 
-1. Go to [app.datadoe.com](https://app.datadoe.com)
-2. Create account
-3. Purchase subscription
-4. Accept Terms and Conditions and Privacy Policy
-5. Go to `Integrations`
-6. Click `MCP` tile (`/integrations/mcp`)
-7. Click `MCP Key`, add name + expiration, click `Create`
-8. Copy key and store in a secure secret manager
+1. Go to [app.datadoe.com](https://app.datadoe.com).
+2. Create an account.
+3. Purchase a subscription.
+4. Accept the Terms and Conditions and Privacy Policy.
+5. Go to the `Integrations` module.
+6. Click the `MCP` tile (this navigates to `/integrations/mcp`).
+7. Click `MCP Key`, then add a name and expiration date, and click `Create`.
+8. Copy the key and store it in a secure secret manager or another safe location.
 
 ## Configure DataDoe MCP in Gemini CLI
 
@@ -82,6 +88,19 @@ What this does (reference behavior):
 
 Reference: [Gemini CLI MCP docs](https://geminicli.com/docs/tools/mcp-server/)
 and [`mcp-remote` usage docs](https://www.npmjs.com/package/mcp-remote#Usage)
+
+## Example prompt library starter pack
+
+To help you start faster with an AI Agent + DataDoe MCP workflow, this repo includes a small prompt library at:
+
+- `.gemini/prompts/EXAMPLES.md`
+
+Use it as a starter pack:
+
+1. Open `.gemini/prompts/EXAMPLES.md`.
+2. Copy a prompt block and adjust placeholders (for example `{{seller_name}}`) to your account context.
+3. Run the prompt in Codex Desktop app or Codex CLI chat with DataDoe MCP enabled.
+4. Save your own high-performing prompts in the same file to build a reusable internal playbook.
 
 ## Run Gemini CLI from Dedicated Launcher
 
@@ -168,14 +187,6 @@ The recommended path is to always start with `./scripts/start-gemini.sh`, which 
 > Treat `DATADOE_MCP_KEY` like a password. Do not publish repositories, screenshots, or logs that contain this key.
 > Never commit real keys to git.
 > If a key is exposed, rotate it immediately.
-
-## Validation Checklist
-
-- `.env` is ignored by Git.
-- `.env.example` is tracked by Git.
-- `GEMINI.md` exists.
-- `gemini mcp list` shows `datadoe`.
-- `/mcp` inside Gemini CLI shows the server as available.
 
 ## How to get help
 
