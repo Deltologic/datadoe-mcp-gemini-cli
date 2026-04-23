@@ -89,12 +89,31 @@ and [`mcp-remote` usage docs](https://www.npmjs.com/package/mcp-remote#Usage)
 
 This repository includes a dedicated launcher script:
 
+> [!WARNING]
+> `scripts/start-gemini.sh` is the protected launcher for this repository.
+> Do not edit, replace, or "quick fix" it unless you are intentionally changing launcher behavior.
+
 ```bash
 ./scripts/start-gemini.sh
 ```
 
-The launcher loads `DATADOE_MCP_KEY` from `.env` into the process environment.
-It rewrites `.gemini/settings.json` to a known-good `mcp-remote` proxy configuration before starting Gemini.
+The launcher loads `.env`, exports `DATADOE_MCP_KEY` into the current process, syncs `.gemini/settings.json` to the repository `mcp-remote` configuration, and then starts Gemini CLI from the repository root.
+
+Short manual:
+
+```bash
+# Interactive menu (recommended)
+./scripts/start-gemini.sh
+
+# Direct launch Gemini CLI
+./scripts/start-gemini.sh --cli
+
+# Validate env loading + Gemini CLI availability only
+./scripts/start-gemini.sh --check
+
+# Help
+./scripts/start-gemini.sh --help
+```
 
 If needed, make it executable once:
 
