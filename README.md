@@ -99,7 +99,7 @@ Use it as a starter pack:
 
 1. Open `.gemini/prompts/EXAMPLES.md`.
 2. Copy a prompt block and adjust placeholders (for example `{{seller_name}}`) to your account context.
-3. Run the prompt in Codex Desktop app or Codex CLI chat with DataDoe MCP enabled.
+3. Run the prompt in Gemini CLI shell chat with DataDoe MCP enabled.
 4. Save your own high-performing prompts in the same file to build a reusable internal playbook.
 
 ## Run Gemini CLI from Dedicated Launcher
