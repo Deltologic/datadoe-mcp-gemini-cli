@@ -70,17 +70,17 @@ If your organization uses Google Workspace subscription access for Gemini CLI, a
 
 ## Configure DataDoe MCP in Gemini CLI
 
-> [!WARNING]
-> Direct `gemini mcp add ...` connection for DataDoe is currently unreliable in our setup.
-> Use the launcher + `mcp-remote` workaround from this repository.
-
-Direct command shown below is kept for reference only:
+Add DataDoe as a project-scoped MCP server:
 
 ```bash
 gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://mcp.datadoe.com/mcp/v1"
 ```
 
-What this does (reference behavior):
+Requires Gemini CLI **0.24.0 or newer** (released 2026-01-14); verified on 0.55.1. On older versions, use the `mcp-remote` proxy described below.
+
+> **Server shows as Disabled?** When Gemini CLI's folder-trust feature is active, project-scoped MCP servers do not load until you trust the folder. Open Gemini CLI in the project directory, accept the trust prompt, then check again with `gemini mcp list`.
+
+What this does:
 
 - adds a project-scoped MCP server named `datadoe`
 - creates/updates `.gemini/settings.json` for shared project configuration
@@ -157,7 +157,7 @@ Recommended workflow:
 
 You can configure DataDoe MCP in either of these ways.
 
-Option A: repository-managed `mcp-remote` proxy config (recommended and currently supported):
+Option A: `mcp-remote` proxy config, used by the launcher script in this repository (needed on Gemini CLI older than 0.24.0):
 
 ```json
 {
@@ -176,13 +176,15 @@ Option A: repository-managed `mcp-remote` proxy config (recommended and currentl
 }
 ```
 
-Option B: direct Gemini MCP HTTP setup (currently unstable in this environment; fallback only):
+Option B: direct Gemini MCP HTTP setup (recommended on Gemini CLI 0.24.0 and newer):
 
 ```bash
 gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://mcp.datadoe.com/mcp/v1"
 ```
 
-The recommended path is to always start with `./scripts/start-gemini.sh`, which loads `.env` and re-syncs `mcp-remote` configuration automatically.
+`./scripts/start-gemini.sh` loads `.env` and writes the `mcp-remote` configuration before launching.
+
+> **Heads-up:** the launcher rewrites `.gemini/settings.json` on every run. If you configured the server with `gemini mcp add`, use `gemini` directly instead of the launcher, or your configuration will be replaced.
 
 > [!CAUTION]
 > Treat `DATADOE_MCP_KEY` like a password. Do not publish repositories, screenshots, or logs that contain this key.

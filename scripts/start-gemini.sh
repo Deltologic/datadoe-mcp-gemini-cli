@@ -44,6 +44,7 @@ ROOT_DIR="$(cd "$(dirname "$SCRIPT_PATH")/.." && pwd)"
 ENV_FILE="$ROOT_DIR/.env"
 MCP_SETTINGS_DIR="$ROOT_DIR/.gemini"
 MCP_SETTINGS_FILE="$MCP_SETTINGS_DIR/settings.json"
+FORCE_MCP_CONFIG="false"
 
 if [[ -t 1 ]]; then
   C_RESET=$'\033[0m'
@@ -246,6 +247,8 @@ usage() {
   info "Options:"
   say "  --cli      Start Gemini CLI after loading .env"
   say "  --check    Validate .env loading, mcp-remote config, and Gemini CLI availability"
+  say "  --force-mcp-config"
+  say "             Overwrite .gemini/settings.json even if it already has a datadoe server"
   say "  -h, --help Show this help message"
 }
 
@@ -269,6 +272,17 @@ load_env() {
 
 configure_mcp_remote_settings() {
   mkdir -p "$MCP_SETTINGS_DIR"
+
+  # Do not clobber a configuration the user set up themselves (for example with
+  # `gemini mcp add`). Pass --force-mcp-config to overwrite it deliberately.
+  if [[ "$FORCE_MCP_CONFIG" != "true" && -f "$MCP_SETTINGS_FILE" ]] \
+    && grep -q '"datadoe"' "$MCP_SETTINGS_FILE" \
+    && ! grep -q 'mcp-remote' "$MCP_SETTINGS_FILE"; then
+    info "Existing datadoe MCP server found in .gemini/settings.json - keeping it."
+    info "Run with --force-mcp-config to replace it with the mcp-remote config."
+    return 0
+  fi
+
   info "Syncing .gemini/settings.json to mcp-remote workaround config..."
 
   cat > "$MCP_SETTINGS_FILE" <<'EOF'
@@ -361,6 +375,9 @@ main() {
         warn "Tip: run this launcher as './scripts/start-gemini.sh' (without source)."
       fi
       return 0
+      ;;
+    --force-mcp-config)
+      FORCE_MCP_CONFIG="true"
       ;;
   esac
 
