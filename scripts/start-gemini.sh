@@ -279,7 +279,7 @@ configure_mcp_remote_settings() {
       "args": [
         "-y",
         "mcp-remote@latest",
-        "https://api.datadoe.com/mcp/v1",
+        "https://mcp.datadoe.com/mcp/v1",
         "--transport",
         "http-only",
         "--header",
