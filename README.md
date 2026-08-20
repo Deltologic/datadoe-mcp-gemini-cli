@@ -77,7 +77,7 @@ If your organization uses Google Workspace subscription access for Gemini CLI, a
 Direct command shown below is kept for reference only:
 
 ```bash
-gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://api.datadoe.com/mcp/v1"
+gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://mcp.datadoe.com/mcp/v1"
 ```
 
 What this does (reference behavior):
@@ -166,7 +166,7 @@ Option A: repository-managed `mcp-remote` proxy config (recommended and currentl
       "command": "bash",
       "args": [
         "-lc",
-        "npx -y mcp-remote@latest https://api.datadoe.com/mcp/v1 --transport http-only --header \"datadoe-mcp-key:${DATADOE_MCP_KEY}\""
+        "npx -y mcp-remote@latest https://mcp.datadoe.com/mcp/v1 --transport http-only --header \"datadoe-mcp-key:${DATADOE_MCP_KEY}\""
       ],
       "env": {
         "DATADOE_MCP_KEY": "$DATADOE_MCP_KEY"
@@ -179,7 +179,7 @@ Option A: repository-managed `mcp-remote` proxy config (recommended and currentl
 Option B: direct Gemini MCP HTTP setup (currently unstable in this environment; fallback only):
 
 ```bash
-gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://api.datadoe.com/mcp/v1"
+gemini mcp add --transport http --scope project --header "datadoe-mcp-key: YOUR_API_KEY" datadoe "https://mcp.datadoe.com/mcp/v1"
 ```
 
 The recommended path is to always start with `./scripts/start-gemini.sh`, which loads `.env` and re-syncs `mcp-remote` configuration automatically.
